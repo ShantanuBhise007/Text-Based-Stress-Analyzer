@@ -133,4 +133,8 @@ def analyze_text(request: AnalyzeRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # 1. This looks for Render's dynamic port, or defaults to 8000
+    port = int(os.environ.get("PORT", 8000)) 
+    
+    # 2. This starts the server using that port
+    uvicorn.run(app, host="0.0.0.0", port=port)
